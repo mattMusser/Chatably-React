@@ -11,7 +11,7 @@ class RoomList extends Component{
     this.roomsRef = this.props.firebase.database().ref('rooms');
   }
 
-  ComponentDidMount() {
+  componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
       room.key = snapshot.key;
@@ -27,6 +27,7 @@ class RoomList extends Component{
             {this.state.rooms.map( (room,index) => {
               return (
                 <li key={index}>{room.name}</li>
+                console.log(room.name);
               )
             })}
           </ul>
